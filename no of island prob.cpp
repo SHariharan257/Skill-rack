@@ -1,10 +1,9 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 class Solution {
 public:
     int row, col;
-    void dfs(vector<vector<char> >& g, int i, int j) {
+    void dfs(char g[][100], int i, int j) {
         if (i < 0 || j < 0 || i >= row || j >= col || g[i][j] == '0')
             return;
         g[i][j] = '0';
@@ -13,13 +12,12 @@ public:
         dfs(g, i, j + 1);
         dfs(g, i, j - 1);
     }
-    int solve(vector<vector<char> >& g) {
-        row = g.size();
-        col = g[0].size();
+    int solve(char g[][100], int r, int c) {
+        row = r;
+        col = c;
         int cnt = 0;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-
                 if (g[i][j] == '1') {
                     cnt++;
                     dfs(g, i, j);
@@ -32,13 +30,13 @@ public:
 int main() {
     int row, col;
     cin >> row >> col;
-    vector<vector<char> > g(row, vector<char>(col));
+    char g[100][100];
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
             cin >> g[i][j];
         }
     }
     Solution s;
-    cout << s.solve(g);
+    cout << s.solve(g, row, col);
     return 0;
 }
