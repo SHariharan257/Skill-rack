@@ -2,16 +2,10 @@ def dfs(i, j):
     if dp[i][j] != -1:
         return dp[i][j]
     ans = 1
-    directions = [
-        (1, 0),
-        (-1, 0),
-        (0, 1),
-        (0, -1)
-    ]
+    directions = [(1, 0),(-1, 0),(0, 1),(0, -1)]
     for di, dj in directions:
         ni = i + di
         nj = j + dj
-
         if 0 <= ni < row and 0 <= nj < col and a[ni][nj] > a[i][j]:
             ans = max(ans, 1 + dfs(ni, nj))
     dp[i][j] = ans
