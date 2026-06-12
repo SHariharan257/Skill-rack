@@ -1,37 +1,35 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
-int trapWater(vector<int>& height) {
-    int n = height.size();
-    if (n == 0)
-        return 0;
-    vector<int> leftMax(n);
-    vector<int> rightMax(n);
-    leftMax[0] = height[0];
-    for (int i = 1; i < n; i++) {
-        leftMax[i] = max(leftMax[i - 1], height[i]);
-    }
-    rightMax[n - 1] = height[n - 1];
-    for (int i = n - 2; i >= 0; i--) {
-        rightMax[i] = max(rightMax[i + 1], height[i]);
-    }
-    int water = 0;
-    for (int i = 0; i < n; i++) {
-        water += min(leftMax[i], rightMax[i]) - height[i];
-    }
-    return water;
-}
 int main() {
     int n;
-    cout << "Enter number of bars: ";
     cin >> n;
-    vector<int> height(n);
-    cout << "Enter heights: ";
+    int height[n];
     for (int i = 0; i < n; i++) {
         cin >> height[i];
     }
-    cout << "Total trapped rain water: ";
-    cout << trapWater(height) << endl;
+    int lh[n];
+    int rh[n];
+    int mx = 0;
+    for (int i = 0; i < n; i++) {
+        if (height[i] > mx)
+            mx = height[i];
+        lh[i] = mx;
+    }
+    mx = 0;
+    for (int i = n - 1; i >= 0; i--) {
+        if (height[i] > mx)
+            mx = height[i];
+        rh[i] = mx;
+    }
+    int ans = 0;
+    for (int i = 0; i < n; i++) {
+        int mn;
+        if (lh[i] < rh[i])
+            mn = lh[i];
+        else
+            mn = rh[i];
+        ans += mn - height[i];
+    }
+    cout << ans;
     return 0;
 }
