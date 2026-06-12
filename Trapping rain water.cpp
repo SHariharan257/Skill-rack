@@ -20,7 +20,6 @@ int trapWater(vector<int>& height) {
                 rightMax = height[right];
             else
                 water += rightMax - height[right];
-
             right--;
         }
     }
