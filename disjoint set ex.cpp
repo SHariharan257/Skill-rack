@@ -20,7 +20,7 @@ int main()
 	int n,m;
 	cin>>n>>m;
 	vector<int> rel(n+1);
-	for(int i=0;i<n;i++) rel[i]=i;
+	for(int i=1;i<=n;i++) rel[i]=i;
 	for(int i=0;i<m;i++){
 		int a,b;
 		cin>>a>>b;
