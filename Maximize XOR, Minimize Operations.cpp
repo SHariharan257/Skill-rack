@@ -1,30 +1,20 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 void solve(){
-	int x,y;
-	cin>>x>>y;
-	if(x==0){
-		cout<<y<<" "<<x<<"\n";
-		return;
-	}
-	int prev,curr=0,ct=0;
-	while(x!=0){
-		x-=1;
-		y+=1;
-		prev=curr;
-		curr=x^y;
-		if(prev>curr){
-			cout<<prev<<" "<<ct<<"\n";
-			break;
-		}
-		ct++;
-	}
-	cout<<curr<<" "<<ct<<"\n";
+    int x,y; cin>>x>>y;
+    int sum=x+y,rx=0,ry=0;
+    for(int sh=30;sh>=0;sh--){
+        if(sum&(1<<sh)){
+            if((rx | (1<<sh))<=x){rx|=(1<<sh);}
+            else{ry|=(1<<sh);}
+        }
+    }
+    cout<<sum<<" "<<x-rx<<endl;
 }
 int main(){
-	int n;
-	cin>>n;
-	while(n--){
-		solve();
-	}
+    int t; cin>>t;
+    while(t--){
+        solve();
+    }
+    return 0;
 }
