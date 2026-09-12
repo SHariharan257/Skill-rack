@@ -49,9 +49,8 @@ void solve(){
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    cout << fixed << setprecision(11);
+    cout<<fixed<<setprecision(11);
     int tc = 1;
-    while(tc--)
-        solve();
+    while(tc--) solve();
     return 0;
 }
