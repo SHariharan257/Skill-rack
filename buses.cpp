@@ -33,8 +33,7 @@ void solve(){
             int mid=(bl+br)/2;
             if(buses[mid].lt<=pos){
                 found=true;
-                if(bl==mid)
-                    break;
+                if(bl==mid) break;
                 bl=mid;
             }
             else{
