@@ -50,7 +50,6 @@ int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout<<fixed<<setprecision(11);
-    int tc = 1;
-    while(tc--) solve();
+    solve();
     return 0;
 }
