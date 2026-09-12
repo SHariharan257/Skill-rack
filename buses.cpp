@@ -6,7 +6,7 @@ using namespace std;
 struct bus{
     ll lt,rt;
     double time;
-    friend bool operator<(bus a, bus b){
+    friend bool operator<(bus a,bus b){
         if(a.lt!=b.lt)
             return a.lt<b.lt;
         return a.time<b.time;
@@ -31,7 +31,7 @@ void solve(){
         bool found=false;
         while(bl<br){
             int mid=(bl+br)/2;
-            if(buses[mid].lt <= pos){
+            if(buses[mid].lt<=pos){
                 found=true;
                 if(bl==mid)
                     break;
